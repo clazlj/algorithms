@@ -33,6 +33,7 @@ public class InlandIp {
         System.out.println("请输入需要的ip个数");
         int count = sc.nextInt();
         System.out.println("结果：");
+        sc.close();
 
         for (int i = 1; i <= count; i++) {
             Random rdint = ThreadLocalRandom.current();
