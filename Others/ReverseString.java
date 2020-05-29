@@ -10,8 +10,8 @@ public class ReverseString {
         System.out.println("输入字符串");
         String oriStr = br.readLine();
         String result = reverse(oriStr);
-        System.out.println("原字符串为" + oriStr);
-        System.out.println("倒序字符串为" + result);
+        System.out.println("原来字符串:" + oriStr);
+        System.out.println("倒序字符串:" + result);
 
         br.close();
     }
