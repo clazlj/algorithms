@@ -10,9 +10,11 @@ public class UpperLowerCase {
         System.out.println("请输入字符串");
         String oriStr = br.readLine();
         String firstUpperStr = upperFirstLetter(oriStr);
+        String lowerFirstLetter = lowerFirstLetter(oriStr);
 
-        System.out.println("原字符串：" + oriStr);
-        System.out.println("首字母大写：" + firstUpperStr);
+        System.out.println("原字符串：".concat(oriStr));
+        System.out.println("首字母大写：".concat(firstUpperStr));
+        System.out.println("首字母小写：".concat(lowerFirstLetter));
 
         br.close();
     }
@@ -24,5 +26,12 @@ public class UpperLowerCase {
         StringBuilder sb = new StringBuilder(str);
         sb.setCharAt(0, Character.toUpperCase(str.charAt(0)));
         return sb.toString();
+    }
+
+    private static String lowerFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toLowerCase().concat(str.substring(1));
     }
 }
