@@ -16,29 +16,40 @@ package exam;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class AddTwoNumbers {
-    private static void addTwoNumbers(ListNode tempNode, ListNode l1, ListNode l2, int todoAdd) {
+    private static ListNode addTwoNumbers(ListNode resultNode, ListNode curNode, ListNode l1, ListNode l2, int nextAdd) {
         if (l1 == null && l2 == null) {
-            return;
+            if (nextAdd > 0) {
+                curNode.val = nextAdd;
+            }
+            return resultNode;
         }
         int l1Val = l1 == null ? 0 : l1.val;
         int l2Val = l2 == null ? 0 : l2.val;
-        int sum = l1Val + l2Val + todoAdd;
+        int sum = l1Val + l2Val + nextAdd;
         int remainder = sum % 10;
-        todoAdd = sum >= 10 ? 1 : 0;
+        nextAdd = sum >= 10 ? 1 : 0;
 
-        tempNode.next = new ListNode(remainder);
-        addTwoNumbers(tempNode.next, l1.next, l2.next, todoAdd);
+        ListNode l1Next = l1 != null ? l1.next : null;
+        ListNode l2Next = l2 != null ? l2.next : null;
+        boolean hasNextNode = l1Next != null || l2Next != null || nextAdd > 0;
+
+        if (resultNode == null) {
+            resultNode = new ListNode(remainder);
+            if (hasNextNode) {
+                resultNode.next = new ListNode(0);
+            }
+            return addTwoNumbers(resultNode, resultNode.next, l1Next, l2Next, nextAdd);
+        } else {
+            curNode.val = remainder;
+            if (hasNextNode) {
+                curNode.next = new ListNode(0);
+            }
+            return addTwoNumbers(resultNode, curNode.next, l1Next, l2Next, nextAdd);
+        }
     }
 
-    // TODO: 2020/9/18 0018 修复(5) + (5)
     private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int sum = l1.val + l2.val ;
-        int remainder = sum % 10;
-        int todoAdd = sum >= 10 ? 1 : 0;
-        ListNode resultNode = new ListNode(remainder);
-        addTwoNumbers(resultNode, l1.next, l2.next, todoAdd);
-
-        return resultNode;
+        return addTwoNumbers(null, null, l1, l2, 0);
     }
 
     private static class ListNode {
@@ -51,6 +62,6 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
-        // TODO: 2020/9/18 0018  
+
     }
 }
