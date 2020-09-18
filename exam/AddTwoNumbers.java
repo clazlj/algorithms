@@ -33,19 +33,22 @@ public class AddTwoNumbers {
         ListNode l2Next = l2 != null ? l2.next : null;
         boolean hasNextNode = l1Next != null || l2Next != null || nextAdd > 0;
 
+        ListNode nextNode;
         if (resultNode == null) {
             resultNode = new ListNode(remainder);
             if (hasNextNode) {
                 resultNode.next = new ListNode(0);
             }
-            return addTwoNumbers(resultNode, resultNode.next, l1Next, l2Next, nextAdd);
+            nextNode = resultNode.next;
         } else {
             curNode.val = remainder;
             if (hasNextNode) {
                 curNode.next = new ListNode(0);
             }
-            return addTwoNumbers(resultNode, curNode.next, l1Next, l2Next, nextAdd);
+            nextNode = curNode.next;
         }
+
+        return addTwoNumbers(resultNode, nextNode, l1Next, l2Next, nextAdd);
     }
 
     private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
