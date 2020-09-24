@@ -23,7 +23,7 @@ public class BubbleSort {
         for (int i = 0; i <= len - 2; i++) {
             //标记位：每个相邻元素已排好序
             boolean swapped = false;
-            for (int j = 0; j <= len - 2 - i; j++) {
+            for (int j = 0; j + 1 <= len - 1 - i; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
                     T temp = arr[j];
                     arr[j] = arr[j + 1];
