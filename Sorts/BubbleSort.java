@@ -20,10 +20,14 @@ public class BubbleSort {
             return;
         }
         int len = arr.length;
-        for (int i = 0; i <= len - 2; i++) {
+        //每次找出一个最大的，共需找到n-1个较大的。
+        for (int i = 1; i <= len - 1; i++) {
             //标记位：每个相邻元素已排好序
             boolean swapped = false;
-            for (int j = 0; j + 1 <= len - 1 - i; j++) {
+            //第1批j<=len-1-1
+            //第2批j<=len-1-2
+            //第3批j<=len-1-3
+            for (int j = 0; j <= len - 1 - i; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
                     T temp = arr[j];
                     arr[j] = arr[j + 1];

@@ -2,7 +2,10 @@ package Sorts;
 
 import java.util.Arrays;
 
-public class PrimitiveSort {
+/**
+ * 选择排序
+ */
+public class SelectionSort {
     public static void main(String[] args) {
         Integer[] intArr = {5, 3, 6, 7, 4, 2, 1, 9, 8};
         System.out.println("原始intArr：" + Arrays.toString(intArr));
