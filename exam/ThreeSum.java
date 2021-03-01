@@ -44,7 +44,6 @@ public class ThreeSum {
         if (nums.length < 3) {
             return Collections.emptyList();
         }
-
         Arrays.sort(nums);
 
         List<List<Integer>> resultList = new ArrayList<>();
