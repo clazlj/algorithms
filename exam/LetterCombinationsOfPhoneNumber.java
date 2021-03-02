@@ -45,15 +45,16 @@ public class LetterCombinationsOfPhoneNumber {
      */
     public static List<String> letterCombinations(String digits) {
         //2->abc;3->def;4->ghi;5->jkl;6->mno;7->pqrs;8->tuv;9->wxyz
-        Map<Character, List<String>> charStrMap = new HashMap<>();
-        charStrMap.put('2', Arrays.asList("a", "b", "c"));
-        charStrMap.put('3', Arrays.asList("d", "e", "f"));
-        charStrMap.put('4', Arrays.asList("g", "h", "i"));
-        charStrMap.put('5', Arrays.asList("j", "k", "l"));
-        charStrMap.put('6', Arrays.asList("m", "n", "o"));
-        charStrMap.put('7', Arrays.asList("p", "q", "r", "s"));
-        charStrMap.put('8', Arrays.asList("t", "u", "v"));
-        charStrMap.put('9', Arrays.asList("w", "x", "y", "z"));
+        Map<Character, List<String>> charStrMap = new HashMap<Character, List<String>>() {{
+            put('2', Arrays.asList("a", "b", "c"));
+            put('3', Arrays.asList("d", "e", "f"));
+            put('4', Arrays.asList("g", "h", "i"));
+            put('5', Arrays.asList("j", "k", "l"));
+            put('6', Arrays.asList("m", "n", "o"));
+            put('7', Arrays.asList("p", "q", "r", "s"));
+            put('8', Arrays.asList("t", "u", "v"));
+            put('9', Arrays.asList("w", "x", "y", "z"));
+        }};
 
         List<List<String>> letterList = new ArrayList<>();
         int length = digits.length();
