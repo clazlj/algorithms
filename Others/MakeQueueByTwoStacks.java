@@ -8,6 +8,7 @@ import java.util.Stack;
  * 当push的时候将元素push进stack1，pop的时候我们先把
  * stack1的元素pop到stack2，然后再对stack2执⾏pop操作，这样就可以保证是先进先出的。
  * （负[pop] * 负[pop]得正[先进先出]）
+ *
  */
 public class MakeQueueByTwoStacks {
     private Stack<Integer> stack1 = new Stack<>();
