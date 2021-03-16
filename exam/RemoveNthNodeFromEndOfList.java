@@ -1,8 +1,7 @@
 package exam;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
@@ -41,9 +40,32 @@ public class RemoveNthNodeFromEndOfList {
     }
 
     /**
+     * 【哑节点】【栈或双端队列：先进后出】
+     */
+    public static ListNode removeNthFromEnd(ListNode head, int n){
+        //哑节点保证最后至少有一个元素
+        ListNode dummyNode = new ListNode(0, head);
+        Deque<ListNode> nodes = new ArrayDeque<>();
+        //或者用栈（java早期JDK1.0遗留的老类，操作有同步锁）
+        //Stack<ListNode> nodes = new Stack<>();
+
+        ListNode curNode = dummyNode;
+        do {
+            nodes.push(curNode);
+        } while ((curNode = curNode.next) != null);
+        for (int i = 1; i <= n; i++) {
+            nodes.pop();
+        }
+        ListNode preNode = nodes.peek();
+        //前一个节点的下一个节点(要被删除的节点)的下一个节点赋值给前一个节点的下一个节点
+        preNode.next = preNode.next.next;
+        return dummyNode.next;
+    }
+
+    /**
      * 删除链表的倒数第 N 个结点
      */
-    public static ListNode removeNthFromEnd(ListNode head, int n) {
+    public static ListNode removeNthFromEnd0(ListNode head, int n) {
         List<ListNode> nodeList = new ArrayList<>();
         ListNode curNode = head;
         do {
