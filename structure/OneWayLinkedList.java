@@ -9,10 +9,36 @@ public class OneWayLinkedList {
     public static void main(String[] args) {
         HeroNode headNode = getHeadNode();
 
+        int lastCount = 2;
+        HeroNode lastTopNode = getLastTopNode(headNode, lastCount);
+        System.out.println("倒数第" + lastCount + "个节点是：" + lastTopNode);
+
         listNode(headNode);
 
         reverseNode(headNode);
         listNode(headNode);
+    }
+
+
+    private static HeroNode getLastTopNode(HeroNode headNode, int lastTop) {
+        if (lastTop < 1 || headNode == null) {
+            return null;
+        }
+        int fastStep = 0;
+        HeroNode fastNode = headNode;
+        HeroNode slowNode = null;
+
+        while (fastNode.next != null) {
+            fastNode = fastNode.next;
+            fastStep++;
+            if (fastStep == lastTop) {
+                slowNode = headNode.next;
+            } else if (fastStep > lastTop) {
+                slowNode = slowNode.next;
+            }
+        }
+
+        return slowNode;
     }
 
 
