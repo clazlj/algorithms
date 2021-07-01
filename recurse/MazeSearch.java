@@ -1,4 +1,4 @@
-package Search;
+package recurse;
 
 /**
  * 8行7列的迷宫格
