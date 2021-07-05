@@ -43,9 +43,10 @@ public class InsertSort {
         }
         //把arr看成前后两部分，前面一部分是有序的，后面一部分是无序的
         //从第二个元素开始找，找它在有序部分的位置
+        int current, insertIndex;
         for (int i = 1; i < arr.length; i++) {
-            int current = arr[i];
-            int insertIndex = i - 1;
+            current = arr[i];
+            insertIndex = i - 1;
             for (int j = i - 1; j >= 0; j--) {
                 if (arr[j] > current) {
                     //遍历的数大于当前寻找位置的数，遍历的数往后挪，位置腾给当前寻找位置的数
