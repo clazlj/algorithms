@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 插入排序
+ * 可以看成步长是1的希尔排序，即希尔排序的最后一轮排序
  */
 public class InsertSort {
     public static void main(String[] args) {

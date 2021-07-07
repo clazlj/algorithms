@@ -19,6 +19,7 @@ public class ShellSort {
 
         ThreadLocalRandom localRandom = ThreadLocalRandom.current();
         int size = 80_000;
+//        size = 20;
         arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = localRandom.nextInt(0, 80000);
@@ -43,16 +44,18 @@ public class ShellSort {
             return;
         }
 
-        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
-            for (int i = gap; i < arr.length; i++) {
+        for (int step = arr.length / 2; step > 0; step /= 2) {
+            for (int i = step; i < arr.length; i++) {
+                //步长step=1，就是最基本的插入排序
                 int current = arr[i];
                 int insertIndex = 0;
-                for (int j = i; j >= gap; j -= gap) {
-                    if (arr[j - gap] > current) {
-                        arr[j] = arr[j - gap];
-                        insertIndex = j - gap;
-                    } else {
+                //current依次和本组内的前一个元素比较，找寻自己可以插入的位置
+                for (int j = i - step; j >= 0; j -= step) {
+                    if (arr[j] > current) {
+                        arr[j + step] = arr[j];
                         insertIndex = j;
+                    } else {
+                        insertIndex = j + step;
                         break;
                     }
                 }
