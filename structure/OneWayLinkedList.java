@@ -14,9 +14,59 @@ public class OneWayLinkedList {
         System.out.println("倒数第" + lastCount + "个节点是：" + lastTopNode);
 
         listNode(headNode);
-
         reverseNode(headNode);
         listNode(headNode);
+
+        merge();
+    }
+
+    /**
+     * 合并两个有序的单向列表
+     */
+    private static void merge() {
+        HeroNode headNode1 = new HeroNode(-1, null, null);
+        headNode1.addNodeByOrder(new HeroNode(1, "宋江", "及时雨"));
+        headNode1.addNodeByOrder(new HeroNode(3, "吴用", "智多星"));
+        headNode1.addNodeByOrder(new HeroNode(10, "十号人物", "老十"));
+
+
+        HeroNode headNode2 = new HeroNode(-1, null, null);
+        headNode2.addNodeByOrder(new HeroNode(2, "卢俊义", "玉麒麟"));
+        headNode2.addNodeByOrder(new HeroNode(4, "柴静", "小旋风"));
+        headNode2.addNodeByOrder(new HeroNode(5, "五号人物", "老五"));
+
+
+        HeroNode mergeNode = new HeroNode(-1, null, null);
+        HeroNode temp1 = headNode1.next;
+        HeroNode temp2 = headNode2.next;
+        HeroNode tempMerge = mergeNode;
+        while (temp1 != null && temp2 != null) {
+            if (temp1.no <= temp2.no) {
+                tempMerge.next = temp1;
+                tempMerge = temp1;
+                temp1 = temp1.next;
+            } else {
+                tempMerge.next = temp2;
+                tempMerge = temp2;
+                temp2 = temp2.next;
+            }
+        }
+
+        while (temp1 != null) {
+            tempMerge.next = temp1;
+            tempMerge = temp1;
+            temp1 = temp1.next;
+        }
+
+        while (temp2 != null) {
+            tempMerge.next = temp2;
+            tempMerge = temp2;
+            temp2 = temp2.next;
+        }
+
+        listNode(mergeNode);
+
+
     }
 
 
