@@ -38,6 +38,14 @@ public class BinaryTree {
         System.out.println("后序遍历结果：");
         tree.postOrder();
         System.out.println("-----------");
+
+        int no = 2;
+        System.out.println(String.format("开始前序查找：%s", no));
+        HeroNode byPreNode = tree.getByPreOrder(no);
+        System.out.println(String.format("前序查找：%s的结果是%s", no, byPreNode));
+        System.out.println("-----------");
+
+        //………………中序、后序查找
     }
 
     private HeroNode rootNode;
@@ -56,6 +64,16 @@ public class BinaryTree {
     }
 
     /**
+     * 前序查找
+     */
+    public HeroNode getByPreOrder(int no) {
+        if (this.rootNode != null) {
+            return this.rootNode.getByPreOrder(no);
+        }
+        return null;
+    }
+
+    /**
      * 中序遍历
      */
     public void infixOrder() {
@@ -63,6 +81,8 @@ public class BinaryTree {
             this.rootNode.infixOrder();
         }
     }
+
+    //....中序查找
 
     /**
      * 后序遍历
@@ -72,6 +92,8 @@ public class BinaryTree {
             this.rootNode.postOrder();
         }
     }
+
+    //....后序查找
 
     static class HeroNode {
         private int no;
@@ -103,6 +125,22 @@ public class BinaryTree {
             if (this.right != null) {
                 this.right.preOrder();
             }
+        }
+
+        public HeroNode getByPreOrder(int no) {
+            if (this.no == no) {
+                return this;
+            }
+            if (this.left != null) {
+                HeroNode node = this.left.getByPreOrder(no);
+                if (node != null) {
+                    return node;
+                }
+            }
+            if (this.right != null) {
+                return this.right.getByPreOrder(no);
+            }
+            return null;
         }
 
         /**
