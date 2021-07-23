@@ -31,6 +31,10 @@ public class BinaryTree {
         tree.preOrder();
         System.out.println("-----------");
 
+        System.out.println("树自身递归前序遍历结果：");
+        tree.preOrderInTree(rootNode);
+        System.out.println("-----------");
+
         System.out.println("中序遍历结果：");
         tree.infixOrder();
         System.out.println("-----------");
@@ -62,6 +66,16 @@ public class BinaryTree {
             this.rootNode.preOrder();
         }
     }
+
+    public void preOrderInTree(HeroNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node);
+        preOrderInTree(node.left);
+        preOrderInTree(node.right);
+    }
+
 
     /**
      * 前序查找
