@@ -33,6 +33,36 @@ public class MakeQueueByTwoStacks {
 
 
     public static void main(String[] args) {
+        MakeQueueByTwoStacks queue = new MakeQueueByTwoStacks();
 
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
+        queue.push(4);
+
+
+        // 一旦pop，中途再push的只能等待pop完，后面的pop才能取到中途push的元素
+        System.out.println(queue.pop() + "出队列");
+        System.out.printf("stack1元素个数%s,stack2元素个数%s\n", queue.stack1.size(), queue.stack2.size());
+
+        System.out.println(queue.pop() + "出队列");
+        System.out.printf("stack1元素个数%s,stack2元素个数%s\n", queue.stack1.size(), queue.stack2.size());
+
+        System.out.println("pop的中途push一个元素");
+        queue.push(5);
+        System.out.printf("stack1元素个数%s,stack2元素个数%s\n", queue.stack1.size(), queue.stack2.size());
+
+        System.out.println(queue.pop() + "出队列");
+        System.out.printf("stack1元素个数%s,stack2元素个数%s\n", queue.stack1.size(), queue.stack2.size());
+
+        System.out.println(queue.pop() + "出队列");
+        System.out.printf("stack1元素个数%s,stack2元素个数%s\n", queue.stack1.size(), queue.stack2.size());
+
+
+        // pop四次后才能pop到5
+        System.out.println(queue.pop() + "出队列");
+        System.out.printf("stack1元素个数%s,stack2元素个数%s", queue.stack1.size(), queue.stack2.size());
+
+        System.out.println(queue.pop() + "出队列");
     }
 }
