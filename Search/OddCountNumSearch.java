@@ -6,7 +6,7 @@ package Search;
  */
 public class OddCountNumSearch {
     public static void main(String[] args) throws Exception {
-        int[] arr = new int[]{5, 6, 7, 6, 8, 6, 5, 7, 8, 10, 10};
+        int[] arr = new int[]{5, 6, 7, 6, 8, 6, 5, 7, 8};
         int num = getNum(arr);
         System.out.printf("出现奇数次的数为%s", num);
     }
