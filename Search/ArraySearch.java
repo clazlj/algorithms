@@ -17,6 +17,7 @@ public class ArraySearch {
         int s = Arrays.binarySearch(e, destChar);
 
         System.out.printf("数组中%s字符%s%n", s > -1 ? "存在" : "不存在", destChar);
+
     }
 
     public static void searchDemo() {
