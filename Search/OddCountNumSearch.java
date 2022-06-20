@@ -3,6 +3,7 @@ package Search;
 /**
  * 一个int[]中只有一个数出现了奇数次，其余的数都出现了偶数次。
  * 找出出现了奇数次的这一个数
+ * 开心消消乐？
  */
 public class OddCountNumSearch {
     public static void main(String[] args) throws Exception {
