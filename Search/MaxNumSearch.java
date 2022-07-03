@@ -26,6 +26,7 @@ public class MaxNumSearch {
             return arr[left];
         }
         //找出left与right的中点
+        //int middle = (left + right) / 2; //left+right存在溢出的风险
         int middle = left + ((right - left) >> 1);
         int leftMax = processMax(arr, left, middle);
         int rightMax = processMax(arr, middle + 1, right);
