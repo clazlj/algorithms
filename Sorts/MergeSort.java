@@ -42,17 +42,18 @@ public class MergeSort {
         //临时数组指针
         int t = 0;
         while (l <= mid && r <= right) {
-            if (arr[l] <= arr[r]) {
-                temp[t++] = arr[l++];
-            } else {
-                temp[t++] = arr[r++];
-            }
+//            if (arr[l] <= arr[r]) {
+//                temp[t++] = arr[l++];
+//            } else {
+//                temp[t++] = arr[r++];
+//            }
+            temp[t++] = arr[l] <= arr[r] ? arr[l++] : arr[r++];
         }
 
+        //两个while虽然是顺序写的，但实际只会一个while会被执行
         while (l <= mid) {
             temp[t++] = arr[l++];
         }
-
         while (r <= right) {
             temp[t++] = arr[r++];
         }
