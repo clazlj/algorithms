@@ -10,16 +10,16 @@ import java.util.Stack;
  * （负[pop] * 负[pop]得正[先进先出]）
  *
  */
-public class MakeQueueByTwoStacks {
-    private Stack<Integer> stack1 = new Stack<>();
-    private Stack<Integer> stack2 = new Stack<>();
+public class MakeQueueByTwoStacks<E> {
+    private final Stack<E> stack1 = new Stack<>();
+    private final Stack<E> stack2 = new Stack<>();
 
     //push操作，将元素添加到stack1
-    public void push(int node) {
+    public void push(E node) {
         stack1.push(node);
     }
 
-    public int pop() {
+    public E pop() {
         if (stack1.empty() && stack2.empty()) {
             throw new RuntimeException("Queue is empty");
         }
@@ -33,7 +33,7 @@ public class MakeQueueByTwoStacks {
 
 
     public static void main(String[] args) {
-        MakeQueueByTwoStacks queue = new MakeQueueByTwoStacks();
+        MakeQueueByTwoStacks<Integer> queue = new MakeQueueByTwoStacks<>();
 
         queue.push(1);
         queue.push(2);
