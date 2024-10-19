@@ -6,7 +6,7 @@ package structure;
  * 逻辑结构：队列
  */
 public class MyQueueByArray {
-    private int[] array;
+    private final int[] array;
     private final int capacity;
     private int front;
     //队尾指针指向的位置。永远空出1位。
